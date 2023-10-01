@@ -1,0 +1,58 @@
+{
+  "items": [
+    {
+      "emoji": "",
+      "nombre": "Nada",
+      "porcentaje": 60
+    },
+    {
+      "emoji": "",
+      "nombre": "3 Cofres Selectos con Llave",
+      "porcentaje": 15
+    },
+    {
+      "emoji": "",
+      "nombre": "Skin Misteriosa Aleatoria",
+      "porcentaje": 12.5
+    },
+    {
+      "emoji": ":tickets:",
+      "nombre": "1 Ticket",
+      "porcentaje": 10
+    },
+    {
+      "emoji": "",
+      "nombre": "Skin Épica",
+      "porcentaje": 2.5
+    }
+  ],
+  "nombre": "Gacha Estándar",
+  "precio": 1
+}
+
+{
+  "items": [
+    {
+      "emoji": "",
+      "nombre": "Nada",
+      "porcentaje": 60
+    },
+    {
+      "emoji": "",
+      "nombre": "3 Cofres Selectos con Llave",
+      "porcentaje": 15
+    },
+    {
+      "emoji": "",
+      "nombre": "Skin Misteriosa Aleatoria",
+      "porcentaje": 12.5
+    },
+    {
+      "emoji": "",
+      "nombre": "1 Ticket",
+      "porcentaje": 12.5
+    }
+  ],
+  "nombre": "Gacha Dos",
+  "precio": 2
+}
