@@ -1,17 +1,17 @@
 {
   "items": [
     {
-      "emoji": "",
+      "emoji": ":x:",
       "nombre": "Nada",
       "porcentaje": 60
     },
     {
-      "emoji": "",
+      "emoji": "<:selecto:1105902489703825558>",
       "nombre": "3 Cofres Selectos con Llave",
       "porcentaje": 15
     },
     {
-      "emoji": "",
+      "emoji": "<:lol_tier_ultimate:1094828936153804923>",
       "nombre": "Skin Misteriosa Aleatoria",
       "porcentaje": 12.5
     },
@@ -21,7 +21,7 @@
       "porcentaje": 10
     },
     {
-      "emoji": "",
+      "emoji": "<:lol_tier_legendary:1094828940884987985>",
       "nombre": "Skin Épica",
       "porcentaje": 2.5
     }
@@ -33,26 +33,31 @@
 {
   "items": [
     {
-      "emoji": "",
+      "emoji": ":x:",
       "nombre": "Nada",
       "porcentaje": 60
     },
     {
-      "emoji": "",
+      "emoji": "<:selecto:1105902489703825558>",
       "nombre": "3 Cofres Selectos con Llave",
       "porcentaje": 15
     },
     {
-      "emoji": "",
+      "emoji": "<:lol_tier_ultimate:1094828936153804923>",
       "nombre": "Skin Misteriosa Aleatoria",
       "porcentaje": 12.5
     },
     {
-      "emoji": "",
+      "emoji": ":tickets:",
       "nombre": "1 Ticket",
-      "porcentaje": 12.5
+      "porcentaje": 10
+    },
+    {
+      "emoji": "<:lol_tier_legendary:1094828940884987985>",
+      "nombre": "Skin Épica",
+      "porcentaje": 2.5
     }
   ],
-  "nombre": "Gacha Dos",
-  "precio": 2
+  "nombre": "Gacha Numero Dos",
+  "precio": 5
 }

@@ -20,14 +20,11 @@ module.exports = {
       if (results) {
         let pages = [];
         results.forEach((gacha, index) => {
-          //console.log(JSON.parse(gacha["info"])["items"]);
-          console.log(gacha)
           let stringItems = "";
           let objecto = JSON.parse(gacha["info"])
           objecto["items"].map((item) => {
-            stringItems = stringItems + (item.nombre + ` ${"``" + item.porcentaje + "%``"}`) + "\n";
+            stringItems = stringItems + (item.emoji + "  " + item.nombre + ` ${"``" + item.porcentaje + "%``"}`) + "\n";
           });
-          console.log(objecto)
           const embed1 = new EmbedBuilder()
             .setColor(0x0099ff)
             .setTitle(objecto.nombre)
@@ -42,11 +39,5 @@ module.exports = {
         console.log(error);
       }
     });
-
-    const embed1 = new EmbedBuilder().setColor(0x0099ff).setTitle("2").setDescription("hola2");
-    const embed2 = new EmbedBuilder().setColor(0x0099ff).setTitle("2").setDescription("hola2");
-    const embed3 = new EmbedBuilder().setColor(0x0099ff).setTitle("3").setDescription("hola3");
-
-    const pages = [embed1, embed2, embed3];
   },
 };
