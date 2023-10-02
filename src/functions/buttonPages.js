@@ -1,6 +1,11 @@
-const { ActionRowBuilder, ButtonBuilder, ButtonStyle, ComponentType } = require("discord.js");
+const { ActionRowBuilder, ButtonBuilder, ButtonStyle, ComponentType, EmbedBuilder } = require("discord.js");
 
-async function buttonPages(interaction, pages, time = 60000) {
+var config = require("../database/connection.js");
+var connection = config.connection;
+
+const ruleta = require("./crearRuleta.js");
+
+async function buttonPages(interaction, pages, gachas) {
   //errores
   if (!interaction) throw new Error("Error. No hay interacción.");
   if (!pages) throw new Error("Error. No hay páginas.");
@@ -23,7 +28,7 @@ async function buttonPages(interaction, pages, time = 60000) {
   //botones
   const prev = new ButtonBuilder().setCustomId("prev").setEmoji("⏪").setStyle(ButtonStyle.Secondary).setDisabled(true);
   const next = new ButtonBuilder().setCustomId("next").setEmoji("⏩").setStyle(ButtonStyle.Secondary);
-  const abrir = new ButtonBuilder().setCustomId("abrir").setEmoji("🥸").setStyle(ButtonStyle.Success);
+  const abrir = new ButtonBuilder().setCustomId("abrir").setLabel("Abrir").setEmoji("🎉").setStyle(ButtonStyle.Success);
 
   const buttonRow = new ActionRowBuilder().addComponents(prev, abrir, next);
   let index = 0;
@@ -37,13 +42,14 @@ async function buttonPages(interaction, pages, time = 60000) {
   //coleccion
   const collector = await currentPage.createMessageComponentCollector({
     ComponentType: ComponentType.Button,
-    time,
+    time: 60000,
   });
 
   collector.on("collect", async (i) => {
     if (i.user.id !== interaction.user.id)
-      return i.reply({
+      return i.editReply({
         content: "No puedes usar este botón.",
+        components: [],
         ephemeral: true,
       });
 
@@ -54,7 +60,52 @@ async function buttonPages(interaction, pages, time = 60000) {
     } else if (i.customId === "next") {
       if (index < pages.length - 1) index++;
     } else if (i.customId === "abrir") {
-      console.log("abierto");
+      connection.query("SELECT * FROM tickets WHERE id_usuario = ?", [interaction.user.id], function (error, results) {
+        if (results) {
+          if (results.length) {
+            let precioGacha = JSON.parse(gachas[index]["info"])["precio"];
+            if (results[0]["tickets_restantes"] >= precioGacha) {
+              connection.query(
+                "UPDATE `tickets` SET `tickets_restantes` = ? WHERE `id_usuario` = ?",
+                [results[0]["tickets_restantes"] - precioGacha, interaction.user.id],
+                function (error, results2) {
+                  if (results2) {
+                    let content = results[0]["tickets_restantes"] - precioGacha > 1 ? "tickets" : "ticket";
+                    let numero = Math.floor(Math.random() * 100) + 1;
+                    let maximo = JSON.parse(gachas[index]["info"])["items"].length;
+                    let premio = "Nada";
+                    JSON.parse(gachas[index]["info"])["items"].forEach((item) => {
+                      if (item["max"] >= numero && item["min"] <= numero) {
+                        premio = item["nombre"];
+                      }
+                    });
+
+                    ruleta(
+                      currentPage,
+                      content,
+                      results[0]["tickets_restantes"] - precioGacha,
+                      interaction.user,
+                      premio
+                    );
+                  } else {
+                    console.log(error);
+                  }
+                }
+              );
+            } else {
+              console.log("sin tickets");
+            }
+          } else {
+            return interaction.editReply({
+              content: `No tienes ningún ticket.`,
+              components: [],
+              ephemeral: true,
+            });
+          }
+        } else {
+          console.log(error);
+        }
+      });
     }
 
     if (index === 0) prev.setDisabled(true);
@@ -77,6 +128,7 @@ async function buttonPages(interaction, pages, time = 60000) {
       components: [],
     });
   });
+
   return currentPage;
 }
 

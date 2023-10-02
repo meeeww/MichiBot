@@ -20,7 +20,7 @@ module.exports = async (client, interaction) => {
     }
 
     if (command.CMD.name != "gacha") {
-      if (interaction.user.id != 11 && interaction.user.id != 293459020793249792) {
+      if (interaction.user.id != 286402429258301440 && interaction.user.id != 293459020793249792) {
         return interaction.reply({ content: `❌ No tienes permisos para usar este comando.` });
       }
     }
