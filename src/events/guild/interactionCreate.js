@@ -20,10 +20,19 @@ module.exports = async (client, interaction) => {
     }
 
     if (command.CMD.name != "gacha") {
-      if (interaction.user.id != 286402429258301440 && interaction.user.id != 293459020793249792) {
+      if (
+        interaction.user.id !== "286402429258301440" &&
+        interaction.user.id !== "293459020793249792" &&
+        !interaction.member.roles.cache.some((r) => r.id === "1108123662030209165")
+      ) {
         return interaction.reply({ content: `❌ No tienes permisos para usar este comando.` });
       }
     }
+    // if (command.CMD.name != "gacha") {
+    //   if (interaction.user.id != 286402429258301440 && interaction.user.id != 293459020793249792) {
+    //     return interaction.reply({ content: `❌ No tienes permisos para usar este comando.` });
+    //   }
+    // }
 
     try {
       command.execute(client, interaction, "/");

@@ -26,12 +26,12 @@ module.exports = {
                 results[0]["tickets_restantes"] > 1 ? "tickets" : "ticket";
               return interaction.reply({
                 content: `**${target.globalName}** tiene ${results[0]["tickets_restantes"]} ${content} restantes. Su total fueron ${results[0]["tickets_totales"]} ${content}.`,
-                ephemeral: false,
+                ephemeral: true,
               });
             } else {
               return interaction.reply({
                 content: `**${target.globalName}** no tiene ningún ticket.`,
-                ephemeral: false,
+                ephemeral: true,
               });
             }
           } else {

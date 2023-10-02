@@ -39,7 +39,7 @@ module.exports = {
                       }. Ahora tiene ${
                         results[0]["tickets_restantes"] - tickets
                       } ${content} restantes.`,
-                      ephemeral: false,
+                      ephemeral: true,
                     });
                   } else {
                     console.log(error2);
@@ -49,7 +49,7 @@ module.exports = {
             } else {
               return interaction.reply({
                 content: `${target.globalName} no tiene tickets.`,
-                ephemeral: false,
+                ephemeral: true,
               });
             }
           } else {

@@ -46,14 +46,14 @@ async function buttonPages(interaction, pages, gachas) {
   });
 
   collector.on("collect", async (i) => {
+    await i.deferUpdate();
+
     if (i.user.id !== interaction.user.id)
       return i.editReply({
         content: "No puedes usar este botón.",
-        components: [],
+        components: [buttonRow],
         ephemeral: true,
       });
-
-    await i.deferUpdate();
 
     if (i.customId === "prev") {
       if (index > 0) index--;

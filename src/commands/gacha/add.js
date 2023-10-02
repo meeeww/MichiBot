@@ -43,7 +43,7 @@ module.exports = {
                       }. Ahora tiene ${
                         results[0]["tickets_restantes"] + tickets
                       } ${content}.`,
-                      ephemeral: false,
+                      ephemeral: true,
                     });
                   } else {
                     console.log(error2);
@@ -63,7 +63,7 @@ module.exports = {
                       }. Ahora tiene ${
                         results[0]["tickets_restantes"] + tickets
                       } ${content}.`,
-                      ephemeral: false,
+                      ephemeral: true,
                     });
                   } else {
                     console.log(error2);
