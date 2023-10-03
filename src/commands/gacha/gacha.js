@@ -44,7 +44,7 @@ module.exports = {
             .setFooter({ text: "Coste por tirada: " + precio.toString() + " " + content });
           pages.push(embed1);
         });
-        buttonPages(interaction, pages, gachas);
+        buttonPages(interaction, pages, gachas, client);
       } else {
         console.log(error);
       }

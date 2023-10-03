@@ -32,14 +32,14 @@ module.exports = {
                 [results[0]["tickets_restantes"] - tickets, target.id],
                 function (error2, results2) {
                   if (results2) {
-                    let content = tickets > 1 ? "tickets" : "ticket";
+                    let content = tickets > 1 ? "tickets restantes" : "ticket restante";
                     return interaction.reply({
                       content: `Le has quitado ${tickets} ${content} a ${
                         target.globalName
                       }. Ahora tiene ${
                         results[0]["tickets_restantes"] - tickets
-                      } ${content} restantes.`,
-                      ephemeral: true,
+                      } ${content}.`,
+                      ephemeral: false,
                     });
                   } else {
                     console.log(error2);
@@ -49,7 +49,7 @@ module.exports = {
             } else {
               return interaction.reply({
                 content: `${target.globalName} no tiene tickets.`,
-                ephemeral: true,
+                ephemeral: false,
               });
             }
           } else {
@@ -60,7 +60,7 @@ module.exports = {
     } else {
       return interaction.reply({
         content: `No puedes darle tickets a un bot.`,
-        ephemeral: true,
+        ephemeral: false,
       });
     }
   },

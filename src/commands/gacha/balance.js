@@ -23,15 +23,16 @@ module.exports = {
           if (results) {
             if (results.length) {
               let content =
-                results[0]["tickets_restantes"] > 1 ? "tickets" : "ticket";
+                results[0]["tickets_restantes"] > 1 ? "tickets restantes" : "ticket restante";
+                let content2 = results[0]["tickets_totales"] > 1 ? `fueron ${results[0]["tickets_totales"]} tickets` : `fue ${results[0]["tickets_totales"]} ticket`;
               return interaction.reply({
-                content: `**${target.globalName}** tiene ${results[0]["tickets_restantes"]} ${content} restantes. Su total fueron ${results[0]["tickets_totales"]} ${content}.`,
-                ephemeral: true,
+                content: `**${target.globalName}** tiene ${results[0]["tickets_restantes"]} ${content}. Su total ${content2}.`,
+                ephemeral: false,
               });
             } else {
               return interaction.reply({
                 content: `**${target.globalName}** no tiene ningún ticket.`,
-                ephemeral: true,
+                ephemeral: false,
               });
             }
           } else {
@@ -42,7 +43,7 @@ module.exports = {
     } else {
       return interaction.reply({
         content: `No puedes darle tickets a un bot.`,
-        ephemeral: true,
+        ephemeral: false,
       });
     }
   },
