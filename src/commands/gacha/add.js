@@ -40,13 +40,15 @@ module.exports = {
               [target.id, target.globalName, tickets, tickets],
               function (error2, results2) {
                 if (results2) {
-                  let content = results[0]["tickets_restantes"] > 1 ? "tickets" : "ticket";
-                  return interaction.reply({
-                    content: `Le has dado ${tickets} ${content} a **${target.globalName}**. Ahora tiene ${
-                      results[0]["tickets_restantes"] + tickets
-                    } ${content}.`,
-                    ephemeral: false,
-                  });
+                  if(results[0] != undefined){
+                    let content = results[0]["tickets_restantes"] > 1 ? "tickets" : "ticket";
+                    return interaction.reply({
+                      content: `Le has dado ${tickets} ${content} a **${target.globalName}**. Ahora tiene ${
+                        results[0]["tickets_restantes"] + tickets
+                      } ${content}.`,
+                      ephemeral: false,
+                    });
+                  }
                 } else {
                   console.log(error2);
                 }
