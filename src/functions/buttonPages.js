@@ -49,12 +49,14 @@ async function buttonPages(interaction, pages, gachas, client) {
   collector.on("collect", async (i) => {
     await i.deferUpdate();
 
-    if (i.user.id !== interaction.user.id)
+    if (i.user.id !== interaction.user.id) {
       return i.editReply({
         content: "No puedes usar este botón.",
-        components: [buttonRow],
+        embeds: [],
+        components: [],
         ephemeral: true,
       });
+    }
 
     if (i.customId === "prev") {
       if (index > 0) index--;
@@ -101,7 +103,7 @@ async function buttonPages(interaction, pages, gachas, client) {
             } else {
               sintickets = sintickets + 1;
               return interaction.editReply({
-                content: `**No tienes ningún ticket.**`,
+                content: `**No tienes suficientes tickets.**`,
                 components: [],
                 embeds: [],
                 ephemeral: true,
@@ -110,7 +112,7 @@ async function buttonPages(interaction, pages, gachas, client) {
           } else {
             sintickets = sintickets + 1;
             return interaction.editReply({
-              content: `**No tienes ningún ticket.**`,
+              content: `**No tienes suficientes tickets.**`,
               components: [],
               embeds: [],
               ephemeral: true,

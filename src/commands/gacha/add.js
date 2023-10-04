@@ -35,9 +35,10 @@ module.exports = {
               }
             );
           } else {
+            console.log(target)
             connection.query(
               "INSERT INTO `tickets` (`id_usuario`, `nombre_usuario`, `tickets_totales`, `tickets_restantes`) VALUES (?, ?, ?, ?)",
-              [target.id, target.globalName, tickets, tickets],
+              [target.id, target.username, tickets, tickets],
               function (error2, results2) {
                 if (results2) {
                   if(results[0] != undefined){
