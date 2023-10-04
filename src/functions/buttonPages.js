@@ -50,7 +50,7 @@ async function buttonPages(interaction, pages, gachas, client) {
     await i.deferUpdate();
 
     if (i.user.id !== interaction.user.id) {
-      return i.editReply({
+      return i.followUp({
         content: "No puedes usar este botón.",
         embeds: [],
         components: [],
