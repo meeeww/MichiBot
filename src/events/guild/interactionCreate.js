@@ -19,7 +19,7 @@ module.exports = async (client, interaction) => {
         return interaction.reply({ content: `❌ No tienes permisos para usar este comando.`, ephemeral: true });
     }
 
-    if (command.CMD.name != "gacha" && command.CMD.name != "info") {
+    if (command.CMD.name != "gacha" && command.CMD.name != "info" && command.CMD.name == "balance") {
       if (interaction.user.id != 286402429258301440 && interaction.user.id != 293459020793249792) {
         return interaction.reply({ content: `❌ No tienes permisos para usar este comando.`, ephemeral: true });
       }
