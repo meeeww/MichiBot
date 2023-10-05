@@ -33,7 +33,7 @@ function nuevo(embedAbierto, colors, currentPage, user, premio, icono, client) {
       let emojis = ["<a:cat_music:1100253056177811557>", "<a:parrotdance:1129235206050684999>"];
       let numero = Math.floor(Math.random() * emojis.length);
       client.channels.cache
-        .get("1158487449568292954")
+        .get("1159446362040057856")
         .send(`¡**<@${user.id}>** ha ganado ${icono} __${premio}__! ${emojis[numero]}`);
       if (premio.includes("Ticket")) {
         connection.query(
