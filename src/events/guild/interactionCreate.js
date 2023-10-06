@@ -24,7 +24,7 @@ module.exports = async (client, interaction) => {
         return interaction.reply({ content: `❌ No tienes permisos para usar este comando.`, ephemeral: true });
       }
     } else {
-      if (interaction.channel.id != 1159473413212094574) {
+      if (interaction.channel.id != 1159473413212094574 && interaction.guild.id != 1157517116551999550) {
         return interaction.reply({ content: `❌ No puedes usar este comando aquí.`, ephemeral: true });
       }
     }
