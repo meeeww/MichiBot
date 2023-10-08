@@ -5,7 +5,7 @@ var connection = config.connection;
 
 module.exports = {
   CMD: new SlashCommandBuilder()
-    .setDescription("Añadir tickets a un usuario.")
+    .setDescription("Ver tickets de a un usuario.")
     .addUserOption((option) =>
       option.setName("usuario").setDescription("Usuario").setRequired(true)
     ),

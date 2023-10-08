@@ -33,39 +33,17 @@ module.exports = {
           });
           let precio = objecto.precio;
           let content = objecto.precio > 1 ? "tickets" : "ticket";
-          connection.query(
-            "SELECT * FROM tickets WHERE id_usuario = ?",
-            [interaction.user.id],
-            function (error, results) {
-              if (results) {
-                if (results.length) {
-                  let content12 = results[0]["tickets_restantes"] > 1 ? "quedan" : "queda";
-                  let content13 = results[0]["tickets_restantes"] > 1 ? "tickets" : "ticket";
-                  const embed1 = new EmbedBuilder()
-                    .setColor(0x0099ff)
-                    .setTitle(objecto.nombre)
-                    .setDescription(stringItems)
-                    .setThumbnail(
-                      "https://cdn.discordapp.com/attachments/1157760445743124510/1158026261143224371/ezgif.com-resize.jpg?ex=651abf7f&is=65196dff&hm=9f0a66703e728c8c09d124e81477b2b3694e79e547ae99d2b35b5bf2df4881a6&"
-                    )
-                    .setFooter({
-                      text:
-                        "Coste por tirada: " +
-                        precio.toString() +
-                        " " +
-                        content +
-                        ". Te " +
-                        content12 +
-                        " " +
-                        results[0]["tickets_restantes"] +
-                        " " +
-                        content13,
-                    });
-                  pages.push(embed1);
-                }
-              }
-            }
-          );
+          const embed1 = new EmbedBuilder()
+            .setColor(0x0099ff)
+            .setTitle(objecto.nombre)
+            .setDescription(stringItems)
+            .setThumbnail(
+              "https://cdn.discordapp.com/attachments/1157760445743124510/1158026261143224371/ezgif.com-resize.jpg?ex=651abf7f&is=65196dff&hm=9f0a66703e728c8c09d124e81477b2b3694e79e547ae99d2b35b5bf2df4881a6&"
+            )
+            .setFooter({
+              text: "Coste por tirada: " + precio.toString() + " " + content,
+            });
+          pages.push(embed1);
         });
         buttonPages(interaction, pages, gachas, client);
       } else {
